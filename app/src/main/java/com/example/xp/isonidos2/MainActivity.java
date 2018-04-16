@@ -46,27 +46,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void sonido(View view){
 
-        //Esto es el MediaPlayer
-        Log.i("etiqueta: ", findViewById(view.getId()).getTag().toString());
-        Button b = (Button) findViewById(view.getId());
-        MediaPlayer m = new MediaPlayer();
-
         VideoView videoview = (VideoView) findViewById(R.id.videoView);
         Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + view.getTag());
         videoview.setVideoURI(uri);
         videoview.start();
-        m = MediaPlayer.create(this, (int)findViewById(view.getId()).getTag());
-        m.start();
-        m.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                mediaPlayer.stop();
-                if (mediaPlayer != null) {
-                    mediaPlayer.release();
-                }
 
-            }
-        });
+
     }
 
     private LinearLayout creaLineaBotones(int numeroLinea){
